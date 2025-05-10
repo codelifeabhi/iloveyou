@@ -1,0 +1,167 @@
+body {
+    position: relative; /* Ensure the body is positioned for the pseudo-element */
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+    z-index: 0; /* Place it behind the content */
+    border: 20px solid transparent; /* Create space for the gradient border */
+    border-image: linear-gradient(135deg, #ffafbd, #ffc3a0) 1; /* Gradient border */
+    border-radius: 15px; /* Match the card's border radius */
+}
+
+.card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    position: relative;
+    z-index: 1; /* Ensure the card is above the gradient border */
+}
+
+.title {
+    color: #e63946;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+button {
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0); /* Gradient background */
+    border: none;
+    border-radius: 25px; /* More rounded corners */
+    color: #1d3557; /* Text color */
+    cursor: pointer;
+    font-size: 18px; /* Slightly larger font size */
+    padding: 12px 20px; /* Increased padding for a larger button */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ffc3a0, #ffafbd); /* Reverse gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+}
+
+button:active {
+    transform: translateY(1px); /* Pressed effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow returns to normal */
+}
+
+.message {
+    color: #6a0572;
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+/* Snow effect */
+.snow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Heart shapes in the background */
+.heart {
+    position: absolute;
+    background: red;
+    width: 20px;
+    height: 20px;
+    transform: rotate(-45deg);
+    z-index: 0; /* Behind the card */
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before {
+    width: 20px;
+    height: 20px;
+    top: -10px; /* Position the top circle */
+    left: 0;
+}
+
+.heart::after {
+    width: 20px;
+    height: 20px;
+    left: 10px; /* Position the right circle */
+    top: 0;
+ }
+
+.heart-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.heart-container .heart {
+    animation: float 5s infinite; /* Floating animation */
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Float up */
+    }
+    100% {
+        transform: translateY(0); /* Float down */
+    }
+}
+
+/* Positioning multiple hearts */
+.heart:nth-child(1) { top: 10%; left: 20%; }
+.heart:nth-child(2) { top: 30%; left: 50%; }
+.heart:nth-child(3) { top: 50%; left: 70%; }
+.heart:nth-child(4) { top: 70%; left: 30%; }
+.heart:nth-child(5) { top: 90%; left: 80%; }
